@@ -6,6 +6,7 @@ package com.twitter.intellij.pants.testFramework;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.testFramework.ThreadTracker;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.util.Collections;
