@@ -198,7 +198,7 @@ public class PantsTargetBuilder extends TargetBuilder<PantsSourceRootDescriptor,
           Thread.currentThread().setName(oldName);
         }
       }
-    }, 0, 1, TimeUnit.SECONDS);
+    }, 0, 10000, TimeUnit.SECONDS);
   }
 
   @NotNull

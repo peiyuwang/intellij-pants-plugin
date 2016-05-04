@@ -222,7 +222,7 @@ public class PantsSystemProjectResolver implements ExternalSystemProjectResolver
             Thread.currentThread().setName(oldName);
           }
         }
-      }, 0, 1, TimeUnit.SECONDS);
+      }, 0, 10000, TimeUnit.SECONDS);
     }
 
     private void queueFocusOnImportDirectory() {
@@ -257,7 +257,7 @@ public class PantsSystemProjectResolver implements ExternalSystemProjectResolver
             Thread.currentThread().setName(oldName);
           }
         }
-      }, 0, 1, TimeUnit.SECONDS);
+      }, 0, 10000, TimeUnit.SECONDS);
     }
   }
 }
