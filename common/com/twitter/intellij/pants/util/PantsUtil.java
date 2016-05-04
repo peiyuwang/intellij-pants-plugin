@@ -3,7 +3,6 @@
 
 package com.twitter.intellij.pants.util;
 
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.intellij.execution.ExecutionException;
@@ -78,6 +77,7 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ThreadFactory;
 import java.util.regex.Pattern;
 
 public class PantsUtil {
@@ -94,7 +94,12 @@ public class PantsUtil {
   public static final Type TYPE_SET_STRING = new TypeToken<Set<String>>() {}.getType();
 
   public static final ScheduledExecutorService scheduledThreadPool = Executors.newSingleThreadScheduledExecutor(
-    new ThreadFactoryBuilder().setNameFormat("pants-plugin-%d").build());
+    new ThreadFactory() {
+      @Override
+      public Thread newThread(Runnable r) {
+        return new Thread(r, "Pants-Plugin-Pool");
+      }
+    });
 
   @Nullable
   public static VirtualFile findBUILDFile(@Nullable VirtualFile vFile) {
