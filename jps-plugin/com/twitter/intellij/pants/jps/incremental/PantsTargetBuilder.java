@@ -184,12 +184,18 @@ public class PantsTargetBuilder extends TargetBuilder<PantsSourceRootDescriptor,
     compileCancellationCheckHandle = PantsUtil.scheduledThreadPool.scheduleAtFixedRate(new Runnable() {
       @Override
       public void run() {
-        if (context.getCancelStatus().isCanceled()) {
-          UnixProcessManager.sendSignalToProcessTree(process, UnixProcessManager.SIGTERM);
-          compileCancellationCheckHandle.cancel(false);
-        }
-        else if (processHandler.isProcessTerminated()) {
-          compileCancellationCheckHandle.cancel(false);
+        final String oldName = Thread.currentThread().getName();
+        Thread.currentThread().setName(oldName + " @ PantsTargetBuilder");
+        try {
+          if (context.getCancelStatus().isCanceled()) {
+            UnixProcessManager.sendSignalToProcessTree(process, UnixProcessManager.SIGTERM);
+            compileCancellationCheckHandle.cancel(false);
+          }
+          else if (processHandler.isProcessTerminated()) {
+            compileCancellationCheckHandle.cancel(false);
+          }
+        } finally {
+          Thread.currentThread().setName(oldName);
         }
       }
     }, 0, 1, TimeUnit.SECONDS);

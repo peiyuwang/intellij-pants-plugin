@@ -204,17 +204,23 @@ public class PantsSystemProjectResolver implements ExternalSystemProjectResolver
       viewSwitchHandle = PantsUtil.scheduledThreadPool.scheduleAtFixedRate(new Runnable() {
         @Override
         public void run() {
-          if (!ProjectView.getInstance(myProject).getPaneIds().contains(ProjectFilesViewPane.ID)) {
-            return;
-          }
-          ApplicationManager.getApplication().invokeLater(new Runnable() {
-            @Override
-            public void run() {
-              ProjectView.getInstance(myProject).changeView(ProjectFilesViewPane.ID);
-              queueFocusOnImportDirectory();
-              viewSwitchHandle.cancel(false);
+          final String oldName = Thread.currentThread().getName();
+          Thread.currentThread().setName(oldName + " @ PantsSystemProjectResolver.queueSwitchToProjectFilesTreeView");
+          try {
+            if (!ProjectView.getInstance(myProject).getPaneIds().contains(ProjectFilesViewPane.ID)) {
+              return;
             }
-          });
+            ApplicationManager.getApplication().invokeLater(new Runnable() {
+              @Override
+              public void run() {
+                ProjectView.getInstance(myProject).changeView(ProjectFilesViewPane.ID);
+                queueFocusOnImportDirectory();
+                viewSwitchHandle.cancel(false);
+              }
+            });
+          } finally {
+            Thread.currentThread().setName(oldName);
+          }
         }
       }, 0, 1, TimeUnit.SECONDS);
     }
@@ -223,27 +229,33 @@ public class PantsSystemProjectResolver implements ExternalSystemProjectResolver
       directoryFocusHandle = PantsUtil.scheduledThreadPool.scheduleAtFixedRate(new Runnable() {
         @Override
         public void run() {
-          if (ModuleManager.getInstance(myProject).getModules().length == 0 ||
-              !ProjectView.getInstance(myProject).getCurrentViewId().equals(ProjectFilesViewPane.ID)) {
-            return;
-          }
-          ApplicationManager.getApplication().invokeLater(new Runnable() {
-            @Override
-            public void run() {
-              final VirtualFile importDirectory = VirtualFileManager.getInstance().findFileByUrl("file://" + myProjectPath);
-              // Skip focusing if directory is not found.
-              if (importDirectory != null) {
-                SelectInContext selectInContext = new FileSelectInContext(myProject, importDirectory);
-                for (SelectInTarget selectInTarget : ProjectView.getInstance(myProject).getSelectInTargets()) {
-                  if (selectInTarget instanceof PantsProjectPaneSelectInTarget) {
-                    selectInTarget.selectIn(selectInContext, false);
-                    break;
+          final String oldName = Thread.currentThread().getName();
+          Thread.currentThread().setName(oldName + " @ PantsSystemProjectResolver.queueFocusOnImportDirectory");
+          try {
+            if (ModuleManager.getInstance(myProject).getModules().length == 0 ||
+                !ProjectView.getInstance(myProject).getCurrentViewId().equals(ProjectFilesViewPane.ID)) {
+              return;
+            }
+            ApplicationManager.getApplication().invokeLater(new Runnable() {
+              @Override
+              public void run() {
+                final VirtualFile importDirectory = VirtualFileManager.getInstance().findFileByUrl("file://" + myProjectPath);
+                // Skip focusing if directory is not found.
+                if (importDirectory != null) {
+                  SelectInContext selectInContext = new FileSelectInContext(myProject, importDirectory);
+                  for (SelectInTarget selectInTarget : ProjectView.getInstance(myProject).getSelectInTargets()) {
+                    if (selectInTarget instanceof PantsProjectPaneSelectInTarget) {
+                      selectInTarget.selectIn(selectInContext, false);
+                      break;
+                    }
                   }
                 }
+                directoryFocusHandle.cancel(false);
               }
-              directoryFocusHandle.cancel(false);
-            }
-          });
+            });
+          } finally {
+            Thread.currentThread().setName(oldName);
+          }
         }
       }, 0, 1, TimeUnit.SECONDS);
     }
