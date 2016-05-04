@@ -201,7 +201,7 @@ public class PantsSystemProjectResolver implements ExternalSystemProjectResolver
     }
 
     private void queueSwitchToProjectFilesTreeView() {
-      viewSwitchHandle = PantsUtil.scheduledThreadPool.scheduleAtFixedRate(new Runnable() {
+      viewSwitchHandle = PantsUtil.scheduledThreadPool.scheduleWithFixedDelay(new Runnable() {
         @Override
         public void run() {
           final String oldName = Thread.currentThread().getName();
@@ -226,7 +226,7 @@ public class PantsSystemProjectResolver implements ExternalSystemProjectResolver
     }
 
     private void queueFocusOnImportDirectory() {
-      directoryFocusHandle = PantsUtil.scheduledThreadPool.scheduleAtFixedRate(new Runnable() {
+      directoryFocusHandle = PantsUtil.scheduledThreadPool.scheduleWithFixedDelay(new Runnable() {
         @Override
         public void run() {
           final String oldName = Thread.currentThread().getName();

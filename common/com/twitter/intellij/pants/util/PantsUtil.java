@@ -44,7 +44,6 @@ import com.intellij.util.Function;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.PathUtil;
 import com.intellij.util.Processor;
-import com.intellij.util.concurrency.AppExecutorUtil;
 import com.intellij.util.containers.ContainerUtil;
 import com.twitter.intellij.pants.PantsException;
 import com.twitter.intellij.pants.model.PantsOptions;
@@ -93,7 +92,7 @@ public class PantsUtil {
 
   public static final Type TYPE_SET_STRING = new TypeToken<Set<String>>() {}.getType();
 
-  public static final ScheduledExecutorService scheduledThreadPool = AppExecutorUtil.getAppScheduledExecutorService();
+  public static final ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(1);
 
   @Nullable
   public static VirtualFile findBUILDFile(@Nullable VirtualFile vFile) {
