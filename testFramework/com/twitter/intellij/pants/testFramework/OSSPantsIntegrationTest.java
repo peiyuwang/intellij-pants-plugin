@@ -3,9 +3,9 @@
 
 package com.twitter.intellij.pants.testFramework;
 
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.util.text.StringUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.intellij.testFramework.ThreadTracker;
 
 import java.io.File;
 import java.util.Collections;
@@ -13,10 +13,15 @@ import java.util.List;
 
 abstract public class OSSPantsIntegrationTest extends PantsIntegrationTestCase {
   public OSSPantsIntegrationTest() {
+    this(true);
   }
 
   public OSSPantsIntegrationTest(boolean readOnly) {
     super(readOnly);
+    ThreadTracker.longRunningThreadCreated(
+      ApplicationManager.getApplication(),
+      "Pants-Plugin-Pool",
+      "Timer");
   }
 
   @NotNull
