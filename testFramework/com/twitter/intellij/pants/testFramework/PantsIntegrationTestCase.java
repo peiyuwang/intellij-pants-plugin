@@ -329,9 +329,9 @@ public abstract class PantsIntegrationTestCase extends ExternalSystemImportingTe
   }
 
   private List<String> assertCompilerMessages(List<CompilerMessage> messages) {
-    StringBuffer buffer = new StringBuffer();
+    StringBuffer fullMessages = new StringBuffer();
     for (CompilerMessage msg : messages) {
-      buffer.append(msg).append("\n");
+      fullMessages.append(msg).append("\n");
     }
 
     for (CompilerMessage message : messages) {
@@ -344,7 +344,8 @@ public abstract class PantsIntegrationTestCase extends ExternalSystemImportingTe
         );
       switch (message.getCategory()) {
         case ERROR:
-          fail("Compilation failed with error: " + buffer.toString());
+          // Always show full error messages.
+          fail("Compilation failed with error: " + fullMessages.toString());
           break;
         case WARNING:
           System.out.println("Compilation warning: " + prettyMessage);
