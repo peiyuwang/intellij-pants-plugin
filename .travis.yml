@@ -22,6 +22,7 @@ install: ./scripts/setup-ci-environment.sh
 # General policy is to support pants for the past 10 releases and the latest master.
 env:
   matrix:
+    - TEST_SET=all
     - TEST_SET=part_0
     - TEST_SET=part_1
     - TEST_SET=part_2
