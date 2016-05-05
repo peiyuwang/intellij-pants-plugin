@@ -22,19 +22,23 @@ install: ./scripts/setup-ci-environment.sh
 # General policy is to support pants for the past 10 releases and the latest master.
 env:
   matrix:
-    - IJ_ULTIMATE=false
-    - IJ_ULTIMATE=true
-    - PANTS_SHA="release_0.0.82" TEST_SET=integration
-    - PANTS_SHA="release_0.0.81" TEST_SET=integration
-    - PANTS_SHA="release_0.0.80" TEST_SET=integration
-    - PANTS_SHA="release_0.0.79" TEST_SET=integration
+    - TEST_SET=part_0
+    - TEST_SET=part_1
+    - TEST_SET=part_2
+    - TEST_SET=part_3
+    - TEST_SET=part_4
+    - TEST_SET=part_5
+    - PANTS_SHA="release_0.0.82" TEST_SET=all
+    - PANTS_SHA="release_0.0.81" TEST_SET=all
+    - PANTS_SHA="release_0.0.80" TEST_SET=all
+    - PANTS_SHA="release_0.0.79" TEST_SET=all
     # 0.0.78 was aborted.
-    - PANTS_SHA="release_0.0.77" TEST_SET=integration
-    - PANTS_SHA="release_0.0.76" TEST_SET=integration
-    - PANTS_SHA="release_0.0.75" TEST_SET=integration
-    - PANTS_SHA="release_0.0.74" TEST_SET=integration
-    - PANTS_SHA="release_0.0.73" TEST_SET=integration
-    - PANTS_SHA="release_0.0.72" TEST_SET=integration
+    - PANTS_SHA="release_0.0.77" TEST_SET=all
+    - PANTS_SHA="release_0.0.76" TEST_SET=all
+    - PANTS_SHA="release_0.0.75" TEST_SET=all
+    - PANTS_SHA="release_0.0.74" TEST_SET=all
+    - PANTS_SHA="release_0.0.73" TEST_SET=all
+    - PANTS_SHA="release_0.0.72" TEST_SET=all
 
 script:
   - ./scripts/run-tests-ci.sh
