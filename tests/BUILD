@@ -1,4 +1,4 @@
-NUM_TARGETS = 6
+NUM_TARGETS = 5
 ALL_TEST_SOURCES = sorted(list(rglobs('*Test.java')))
 
 TEST_NAMES = ['part_{}'.format(i) for i in xrange(NUM_TARGETS)]
