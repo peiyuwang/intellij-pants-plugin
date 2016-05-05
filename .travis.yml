@@ -27,7 +27,6 @@ env:
     - TEST_SET=part_2
     - TEST_SET=part_3
     - TEST_SET=part_4
-    - TEST_SET=part_5
     - PANTS_SHA="release_0.0.82" TEST_SET=all
     - PANTS_SHA="release_0.0.81" TEST_SET=all
     - PANTS_SHA="release_0.0.80" TEST_SET=all
