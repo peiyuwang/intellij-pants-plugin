@@ -65,7 +65,7 @@ import com.intellij.openapi.vfs.newvfs.impl.VfsRootAccess;
  * If your integration test modifies any source files
  * please set {@link PantsIntegrationTestCase#readOnly} to false.
  *
- * @see com.twitter.intellij.pants.highlighting.PantsHighlightingIntegrationTest
+ * @see com.twitter.intellij.pants.highlighting.PantsHighlightingIntegrationTestBase
  */
 public abstract class PantsIntegrationTestCase extends ExternalSystemImportingTestCase {
 

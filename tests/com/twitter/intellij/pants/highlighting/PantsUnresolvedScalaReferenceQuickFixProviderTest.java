@@ -10,7 +10,7 @@ import com.intellij.psi.PsiClass;
 import com.intellij.util.ArrayUtil;
 import com.twitter.intellij.pants.quickfix.AddPantsTargetDependencyFix;
 
-public class PantsUnresolvedScalaReferenceQuickFixProviderTest extends PantsHighlightingIntegrationTest {
+public class PantsUnresolvedScalaReferenceQuickFixProviderTest extends PantsHighlightingIntegrationTestBase {
   @Override
   protected String[] getRequiredPluginIds() {
     return ArrayUtil.append(super.getRequiredPluginIds(), "PythonCore");
