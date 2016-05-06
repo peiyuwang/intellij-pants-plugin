@@ -303,7 +303,6 @@ public class PantsUtil {
     commandLine.addParameter("--no-jar-create-use-nailgun");
     commandLine.addParameter("--no-publish-jar-use-nailgun");
     commandLine.addParameter("--no-resolve-ivy-use-nailgun");
-    commandLine.addParameter("ng-killall");
     return commandLine;
   }
 
