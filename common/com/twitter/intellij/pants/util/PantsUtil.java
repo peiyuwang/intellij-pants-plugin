@@ -283,7 +283,22 @@ public class PantsUtil {
     );
     commandLine.setExePath(pantsExecutablePath);
     final String workingDir = pantsExecutable.getParentFile().getAbsolutePath();
-    return commandLine.withWorkDirectory(workingDir);
+    commandLine.withWorkDirectory(workingDir);
+    commandLine.addParameter("--bootstrap-bootstrap-jvm-tools-jvm-options=-Xms512M");
+    commandLine.addParameter("--bootstrap-bootstrap-jvm-tools-shader-jvm-options=-Xms512M");
+    commandLine.addParameter("--compile-zinc-jvm-options=-Xms512M");
+    commandLine.addParameter("--eclipse-jvm-options=-Xms512M");
+    commandLine.addParameter("--ensime-jvm-options=-Xms512M");
+    commandLine.addParameter("--export-jvm-options=-Xms512M");
+    commandLine.addParameter("--idea-jvm-options=-Xms512M");
+    commandLine.addParameter("--imports-ivy-imports-jvm-options=-Xms512M");
+    commandLine.addParameter("--jar-tool-jvm-options=-Xms512M");
+    //commandLine.addParameter("--jvm-options=-Xms512M");
+    commandLine.addParameter("--jvm-run-jvm-options=-Xms512M");
+    commandLine.addParameter("--publish-jar-jvm-options=-Xms512M");
+    commandLine.addParameter("--resolve-ivy-jvm-options=-Xms512M");
+    commandLine.addParameter("--test-junit-coverage-jvm-options=-Xms512M");
+    return commandLine;
   }
 
   public static Collection<String> listAllTargets(@NotNull String projectPath) throws PantsException {
