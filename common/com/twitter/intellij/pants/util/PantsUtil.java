@@ -283,7 +283,11 @@ public class PantsUtil {
     );
     commandLine.setExePath(pantsExecutablePath);
     final String workingDir = pantsExecutable.getParentFile().getAbsolutePath();
-    return commandLine.withWorkDirectory(workingDir);
+    commandLine.withWorkDirectory(workingDir);
+    // TODO only enable verbose for test.
+    commandLine.addParameter(PantsConstants.PANTS_CLI_OPTION_DEBUG);
+    commandLine.addParameter(PantsConstants.PANTS_CLI_OPTION_PRINT_STACKTRACE);
+    return commandLine;
   }
 
   public static Collection<String> listAllTargets(@NotNull String projectPath) throws PantsException {
