@@ -287,6 +287,23 @@ public class PantsUtil {
     // TODO only enable verbose for test.
     commandLine.addParameter(PantsConstants.PANTS_CLI_OPTION_DEBUG);
     commandLine.addParameter(PantsConstants.PANTS_CLI_OPTION_PRINT_STACKTRACE);
+    commandLine.addParameter("--no-binary-dup-use-nailgun");
+    commandLine.addParameter("--no-binary-jvm-use-nailgun");
+    commandLine.addParameter("--no-bootstrap-bootstrap-jvm-tools-use-nailgun");
+    commandLine.addParameter("--no-bundle-dup-use-nailgun");
+    commandLine.addParameter("--no-bundle-jvm-use-nailgun");
+    commandLine.addParameter("--no-compile-zinc-use-nailgun");
+    commandLine.addParameter("--no-detect-duplicates-use-nailgun");
+    commandLine.addParameter("--no-eclipse-use-nailgun");
+    commandLine.addParameter("--no-ensime-use-nailgun");
+    commandLine.addParameter("--no-gen-antlr-use-nailgun");
+    commandLine.addParameter("--no-gen-jaxb-use-nailgun");
+    commandLine.addParameter("--no-idea-use-nailgun");
+    commandLine.addParameter("--no-imports-ivy-imports-use-nailgun");
+    commandLine.addParameter("--no-jar-create-use-nailgun");
+    commandLine.addParameter("--no-publish-jar-use-nailgun");
+    commandLine.addParameter("--no-resolve-ivy-use-nailgun");
+    commandLine.addParameter("ng-killall");
     return commandLine;
   }
 
