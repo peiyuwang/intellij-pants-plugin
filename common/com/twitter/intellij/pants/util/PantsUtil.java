@@ -293,8 +293,10 @@ public class PantsUtil {
     commandLine.addParameter("--idea-jvm-options=-Xms512M");
     commandLine.addParameter("--imports-ivy-imports-jvm-options=-Xms512M");
     commandLine.addParameter("--jar-tool-jvm-options=-Xms512M");
-    //commandLine.addParameter("--jvm-options=-Xms512M");
+    commandLine.addParameter("--jvm-options=-Xms512M");
     commandLine.addParameter("--jvm-run-jvm-options=-Xms512M");
+    commandLine.addParameter("--compile-checkstyle-jvm-options=-Xms512M");
+    commandLine.addParameter("--compile-scalastyle-jvm-options=-Xms512M");
     commandLine.addParameter("--publish-jar-jvm-options=-Xms512M");
     commandLine.addParameter("--resolve-ivy-jvm-options=-Xms512M");
     commandLine.addParameter("--test-junit-coverage-jvm-options=-Xms512M");
