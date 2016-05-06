@@ -284,9 +284,6 @@ public class PantsUtil {
     commandLine.setExePath(pantsExecutablePath);
     final String workingDir = pantsExecutable.getParentFile().getAbsolutePath();
     commandLine.withWorkDirectory(workingDir);
-    // TODO only enable verbose for test.
-    commandLine.addParameter(PantsConstants.PANTS_CLI_OPTION_DEBUG);
-    commandLine.addParameter(PantsConstants.PANTS_CLI_OPTION_PRINT_STACKTRACE);
     commandLine.addParameter("--no-binary-dup-use-nailgun");
     commandLine.addParameter("--no-binary-jvm-use-nailgun");
     commandLine.addParameter("--no-bootstrap-bootstrap-jvm-tools-use-nailgun");
