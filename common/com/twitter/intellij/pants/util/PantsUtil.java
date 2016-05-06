@@ -292,7 +292,6 @@ public class PantsUtil {
     commandLine.addParameter("--export-jvm-options=-Xms1g");
     commandLine.addParameter("--idea-jvm-options=-Xms1g");
     commandLine.addParameter("--imports-ivy-imports-jvm-options=-Xms1g");
-    commandLine.addParameter("--jar-tool-jvm-options=-Xms1g");
     commandLine.addParameter("--jvm-options=-Xms1g");
     commandLine.addParameter("--jvm-run-jvm-options=-Xms1g");
     commandLine.addParameter("--compile-checkstyle-jvm-options=-Xms1g");
