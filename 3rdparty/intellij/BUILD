@@ -1,5 +1,6 @@
-import re
 import os
+import re
+
 
 _jdk_jars = [
     'sa-jdi.jar',
