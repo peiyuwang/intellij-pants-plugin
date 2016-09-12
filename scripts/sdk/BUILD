@@ -13,8 +13,8 @@ jvm_binary(
   ],
   deploy_excludes = [
     # TODO fix hardcoded version in names
-    exclude('com.intellij.sdk.community', 'slf4j-api-1.7.10.jar'),
-    exclude('com.intellij.sdk.community', 'slf4j-log4j12-1.7.10.jar'),
+    exclude('com.intellij.sdk.community', 'slf4j-api'),
+    exclude('com.intellij.sdk.community', 'slf4j-log4j12'),
   ],
 )
 
@@ -50,7 +50,7 @@ jvm_binary(
   ],
   deploy_excludes = [
     # TODO fix hardcoded version in names
-    exclude('com.intellij.sdk.community', 'slf4j-api-1.7.10.jar'),
-    exclude('com.intellij.sdk.community', 'slf4j-log4j12-1.7.10.jar'),
+    exclude('com.intellij.sdk.community', 'slf4j-api'),
+    exclude('com.intellij.sdk.community', 'slf4j-log4j12'),
   ],
 )
