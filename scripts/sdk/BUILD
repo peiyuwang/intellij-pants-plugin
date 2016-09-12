@@ -10,7 +10,12 @@ jvm_binary(
     ':plugin-resources',
     '3rdparty/intellij:external-system-test-api',
     '3rdparty/intellij:sdk',
-  ]
+  ],
+  deploy_excludes = [
+    # TODO fix hardcoded version in names
+    exclude('com.intellij.sdk.community', 'slf4j-api-1.7.10.jar'),
+    exclude('com.intellij.sdk.community', 'slf4j-log4j12-1.7.10.jar'),
+  ],
 )
 
 jvm_binary(
@@ -44,6 +49,7 @@ jvm_binary(
     'src:pants-intellij-plugin',
   ],
   deploy_excludes = [
+    # TODO fix hardcoded version in names
     exclude('com.intellij.sdk.community', 'slf4j-api-1.7.10.jar'),
     exclude('com.intellij.sdk.community', 'slf4j-log4j12-1.7.10.jar'),
   ],
