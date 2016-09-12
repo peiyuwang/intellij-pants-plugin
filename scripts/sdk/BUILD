@@ -42,5 +42,9 @@ jvm_binary(
     'tests:metrics',
     'jps-plugin',
     'src:pants-intellij-plugin',
-  ]
+  ],
+  deploy_excludes = [
+    exclude('com.intellij.sdk.community', 'slf4j-api-1.7.10.jar'),
+    exclude('com.intellij.sdk.community', 'slf4j-log4j12-1.7.10.jar'),
+  ],
 )
